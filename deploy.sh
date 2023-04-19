@@ -18,14 +18,17 @@ git clone git@github.com:YOUR DESTINATION REPOSITORY deploy
 
 cd deploy
 
-rm -rf *
+rm -rf ./html
+rm -rf ./src
+
 cp -rf ../user_repo/. .
+cp -f ../leanpkg.toml .
+
 cp -rf ../build/html ./html
-cp ../build/latex/title_of_the_book.pdf .
+cp -f ../build/latex/title_of_the_book.pdf .
 cp -rf ../src ./src
 
 DATE=$(date +"%m/%d/%Y %T")
-
 
 git add .
 git commit -m "Update $DATE"
