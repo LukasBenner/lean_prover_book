@@ -1,8 +1,4 @@
-Enable-ExperimentalFeature PSNativeCommandErrorActionPreference
-Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
-$PSNativeCommandUseErrorActionPreference = $true
-
 
 if (Test-Path deploy) {
   Remove-Item deploy -Recurse -Force
