@@ -1,6 +1,6 @@
 
 
-Mathematics in Lean
+TITLE OF THE BOOK
 ===================
 
 .. toctree::

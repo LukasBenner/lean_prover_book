@@ -14,7 +14,7 @@ if (Test-Path deploy) {
 
 # 3. Deploy
 
-& git clone git@github.com:YOUR_DESTINATION_REPOSITORY deploy
+& git clone git@github.com:DEST_REPO deploy
 
 Set-Location deploy
 
@@ -29,7 +29,7 @@ Copy-Item ..\user_repo\. . -Recurse -Force
 Copy-Item ..\leanpkg.toml . -Force
 
 Copy-Item ..\build\html .\html -Recurse -Container
-Copy-Item ..\build\latex\title_of_the_book.pdf . -Force
+Copy-Item ..\build\latex\BOOK_FILE_NAME.pdf . -Force
 Copy-Item ..\src .\src -Recurse -Container
 
 $DATE=Get-Date

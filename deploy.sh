@@ -14,7 +14,7 @@ make latexpdf
 
 # 3. Deploy
 
-git clone git@github.com:YOUR DESTINATION REPOSITORY deploy
+git clone git@github.com:DEST_REPO deploy
 
 cd deploy
 
@@ -25,7 +25,7 @@ cp -rf ../user_repo/. .
 cp -f ../leanpkg.toml .
 
 cp -rf ../build/html ./html
-cp -f ../build/latex/title_of_the_book.pdf .
+cp -f ../build/latex/BOOK_FILE_NAME.pdf .
 cp -rf ../src ./src
 
 DATE=$(date +"%m/%d/%Y %T")
