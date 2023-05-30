@@ -4,7 +4,7 @@
 # You can set these variables from the command line, and also
 # from the environment for the first two.
 SPHINXOPTS    =
-SPHINXBUILD   = python3 -msphinx  # was: sphinx-build
+SPHINXBUILD   = python -msphinx  # was: sphinx-build
 SPHINXPROJ    = BOOK_FILE_NAME
 SOURCEDIR     = source
 BUILDDIR      = build

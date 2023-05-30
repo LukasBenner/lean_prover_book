@@ -6,7 +6,7 @@ if (Test-Path deploy) {
 
 # 1. Build
 
-& .\lean_source\mkall.bat
+& python .\lean_source\mkdoc.py
 
 & .\Make.bat clean
 & .\Make.bat html

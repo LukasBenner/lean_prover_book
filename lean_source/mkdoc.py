@@ -1,29 +1,7 @@
-import sys
 import regex
 from pathlib import Path
+import os 
 
-chapter_name = sys.argv[1]
-section_name = sys.argv[2]
-
-# Paths to input and output files.
-root = Path(__file__).parent
-source_path = root/chapter_name/('source_' + section_name + '.lean')
-
-rst_chapter_path = root.resolve().parent/'source'/chapter_name
-if not rst_chapter_path.exists():
-    rst_chapter_path.mkdir()
-rst_path = rst_chapter_path/(section_name + '.inc')
-
-lean_chapter_path = root.resolve().parent/'src'/chapter_name
-if not lean_chapter_path.exists():
-    lean_chapter_path.mkdir(parents=True)
-
-lean_solutions_path = lean_chapter_path/'solutions'
-if not lean_solutions_path.exists():
-    lean_solutions_path.mkdir()
-
-lean_file_path = lean_chapter_path/(section_name + '.lean')
-solutions_path = lean_solutions_path/('solutions_' + section_name + '.lean')
 
 # Regular expressions.
 main_mode = regex.compile(r'-- EXAMPLES:.*|/- EXAMPLES:.*|EXAMPLES: -/.*')
@@ -39,9 +17,30 @@ literalinclude = regex.compile(r'-- LITERALINCLUDE: (.*)')
 
 # Used to avoid name collisions.
 dummy_chars = 'αα'
+root = Path(os.path.dirname(os.path.realpath(__file__)))
 
-if __name__ == '__main__':
-    with source_path.open(encoding='utf8') as source_file, \
+def CreateChapter(chapter_name: str):
+  rst_chapter_path = root.resolve().parent/'source'/chapter_name
+  if not rst_chapter_path.exists():
+    rst_chapter_path.mkdir()
+  return rst_chapter_path
+  
+def CreateLeanChapter(chapter_name: str):
+  lean_chapter_path = root.resolve().parent/'src'/chapter_name
+  if not lean_chapter_path.exists():
+    lean_chapter_path.mkdir(parents=True)
+  return lean_chapter_path
+
+
+def CreateLeanSolutionsPath(lean_chapter_path:str):
+  lean_solutions_path = lean_chapter_path/'solutions'
+  if not lean_solutions_path.exists():
+    lean_solutions_path.mkdir()
+  return lean_solutions_path
+
+
+def ExtractContents(source_path, rst_path, lean_file_path, solutions_path):
+  with source_path.open(encoding='utf8') as source_file, \
             rst_path.open('w', encoding='utf8') as rst_file, \
             lean_file_path.open('w', encoding='utf8') as lean_file, \
             solutions_path.open('w', encoding='utf8') as solutions:
@@ -111,3 +110,28 @@ if __name__ == '__main__':
                 if quoting and mode != 'solutions':
                     # Write the lean code into the document
                     rst_file.write('  ' + line)
+
+
+if __name__ == '__main__':
+    
+  for dirpath, dnames, fnames in os.walk(root):
+    for f in fnames:
+      if f.endswith(".lean"):
+
+        source_path = Path(os.path.join(dirpath, f))
+
+        chapter_name = source_path.parent.name
+        section_name = source_path.stem
+
+        print(chapter_name + " " + section_name)
+
+        rst_chapter_path = CreateChapter(chapter_name)
+        rst_path = rst_chapter_path/(section_name + '.inc')
+
+        lean_chapter_path = CreateLeanChapter(chapter_name)
+        lean_file_path = lean_chapter_path/(section_name + '.lean')
+
+        lean_solutions_path = CreateLeanSolutionsPath(lean_chapter_path)
+        solutions_path = lean_solutions_path/('solutions_' + section_name + '.lean')
+
+        ExtractContents(source_path, rst_path, lean_file_path, solutions_path)

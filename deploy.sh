@@ -6,7 +6,7 @@ rm -rdf deploy
 
 # 1. Build
 
-./lean_source/mkall.sh
+python3 ./lean_source/mkdoc.py
 
 make clean
 make html
