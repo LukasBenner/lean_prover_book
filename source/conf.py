@@ -6,7 +6,7 @@ sys.path.insert(0, os.path.abspath('.'))
 
 # -- Project information -----------------------------------------------------
 
-title = 'TITLE OF THE BOOK'
+project = 'TITLE OF THE BOOK'
 subtitle = 'SUBTITLE'
 author = 'AUTHOR'
 copyright = '2022, ' + author
@@ -109,7 +109,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, book_file_name + '.tex', title, author, 'manual'),
+    (master_doc, book_file_name + '.tex', project, author, 'manual'),
 ]
 
 
@@ -118,7 +118,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, book_file_name, title, [author], 1)
+    (master_doc, book_file_name, project, [author], 1)
 ]
 
 # -- Options for Texinfo output -------------------------------------------
@@ -127,5 +127,5 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, book_file_name, title, author, book_file_name, subtitle, 'Miscellaneous'),
+    (master_doc, book_file_name, project, author, book_file_name, subtitle, 'Miscellaneous'),
 ]
