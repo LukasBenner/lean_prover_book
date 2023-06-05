@@ -26,7 +26,7 @@ To compile the source code, you'll need the following tools installed:
 
 - TeXLive (only if you want to build a PDF)
 
-To [install]([Installation &mdash; Sphinx-RTD-Tutorial documentation](https://sphinx-rtd-tutorial.readthedocs.io/en/latest/install.html)) Sphinx run `(sudo) pip install sphinx`. After that, install the ReadTheDocs theme with `(sudo) pip install sphinx-rtd-theme`. To install TexLive, follow the instructions of the official [documentation](https://www.tug.org/texlive/).
+To [install](https://sphinx-rtd-tutorial.readthedocs.io/en/latest/install.html) Sphinx run `(sudo) pip install sphinx`. After that, install the ReadTheDocs theme with `(sudo) pip install sphinx-rtd-theme`. To install TexLive, follow the instructions of the official [documentation](https://www.tug.org/texlive/).
 
 Use the [cheatsheet](restructuredText_Cheatsheet.rst) to get to know the syntax of the reST-Format
 
