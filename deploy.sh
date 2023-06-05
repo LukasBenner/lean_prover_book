@@ -14,7 +14,7 @@ make latexpdf
 
 # 3. Deploy
 
-git clone git@github.com:DEST_REPO deploy
+git clone https://github.com:DEST_REPO deploy
 
 cd deploy
 
