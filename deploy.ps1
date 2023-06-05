@@ -14,7 +14,7 @@ if (Test-Path deploy) {
 
 # 3. Deploy
 
-& git clone https://github.com:DEST_REPO deploy
+& git clone https://github.com/DEST_REPO deploy
 
 Set-Location deploy
 

@@ -34,13 +34,13 @@ Use the [cheatsheet](restructuredText_Cheatsheet.rst) to get to know the syntax 
 
 Before building the book, you should configure the meta information. We recomment using the search and replace function of VS Code. Search the following strings and replace them with real information. Most of the configuration is done in the `source/conf.py` but some values are located in `index.rst`, `deploy.sh` and `deploy.ps1`
 
-| Key                      | Location                                           | Explanation                                                          |
-| ------------------------ | -------------------------------------------------- | -------------------------------------------------------------------- |
-| TITLE OF THE BOOK        | conf.py, index.rst                                 | The title.                                                           |
-| SUBTITILE                | conf.py                                            | The subtitle.                                                        |
-| MAX MUSTERMANN           | conf.py                                            | The author.                                                          |
-| BOOK_FILE_NAME           | conf.py, deploy.sh, deploy.ps1, Make.bat, Makefile | The filename without the file extension used for the LaTeX document. |
-| git@github.com:DEST_REPO | deploy.sh, deploy.ps1                              | The link to your destination repository.                             |
+| Key                          | Location                                           | Explanation                                                          |
+| ---------------------------- | -------------------------------------------------- | -------------------------------------------------------------------- |
+| TITLE OF THE BOOK            | conf.py, index.rst                                 | The title.                                                           |
+| SUBTITILE                    | conf.py                                            | The subtitle.                                                        |
+| MAX MUSTERMANN               | conf.py                                            | The author.                                                          |
+| BOOK_FILE_NAME               | conf.py, deploy.sh, deploy.ps1, Make.bat, Makefile | The filename without the file extension used for the LaTeX document. |
+| https://github.com/DEST_REPO | deploy.sh, deploy.ps1                              | The link to your destination repository.                             |
 
 ## How to build
 
