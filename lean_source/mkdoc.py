@@ -4,16 +4,16 @@ import os
 
 
 # Regular expressions.
-main_mode = regex.compile(r'-- EXAMPLES:.*|/- EXAMPLES:.*|EXAMPLES: -/.*')
-both_mode = regex.compile(r'-- BOTH:.*|/- BOTH:.*|BOTH: -/.*')
-solutions_mode = regex.compile(r'-- SOLUTIONS:.*|/- SOLUTIONS:.*|SOLUTIONS: -/.*')
-omit_mode = regex.compile(r'-- OMIT:.*|/- OMIT:.*|OMIT: -/.*')
-tag_line = regex.compile(r'-- TAG:.*')
-text_start = regex.compile(r'/- TEXT:.*')
-text_end = regex.compile(r'TEXT\. -/.*')
-quote_start = regex.compile(r'-- QUOTE:.*')
-quote_end = regex.compile(r'-- QUOTE\..*')
-literalinclude = regex.compile(r'-- LITERALINCLUDE: (.*)')
+main_mode = regex.compile(r'--\s*EXAMPLES:.*|/-\s*EXAMPLES:.*|EXAMPLES:\s*-/.*')
+both_mode = regex.compile(r'--\s*BOTH:.*|/-\s*BOTH:.*|BOTH:\s*-/.*')
+solutions_mode = regex.compile(r'--\s*SOLUTIONS:.*|/-\s*SOLUTIONS:.*|SOLUTIONS:\s*-/.*')
+omit_mode = regex.compile(r'--\s*OMIT:.*|/-\s*OMIT:.*|OMIT:\s*-/.*')
+tag_line = regex.compile(r'--\s*TAG:.*')
+text_start = regex.compile(r'/-\s*TEXT:.*')
+text_end = regex.compile(r'TEXT\.\s*-/.*')
+quote_start = regex.compile(r'--\s*QUOTE:.*')
+quote_end = regex.compile(r'--\s*QUOTE\..*')
+literalinclude = regex.compile(r'--\s*LITERALINCLUDE:\s*(.*)')
 
 # Used to avoid name collisions.
 dummy_chars = 'αα'
