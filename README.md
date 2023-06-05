@@ -1,47 +1,81 @@
 # Template for a book about the lean prover
 
-This repository holds the sourcecode of the book and the lean files.
-
-Der Inhalt wird mittels Markup in `.lean` Dateien in `lean_source` verfasst.
-Das Skript `lean_source/mkall.sh` oder `lean_source/mkall.bat` generiert aus den `.lean` Dateien
-die `.rst` Dateien für das Dokument in `source` und eine Aufgaben Datei, sowie eine Datei mit Lösungen in `.src`.
-
-Um das Dokument zu bauen, müssen [Sphinx und ReadTheDocs](https://sphinx-rtd-tutorial.readthedocs.io/en/latest/install.html) installiert sein.
-Um das Dokument als Latex Dokument zu bauen, muss außerdem [Latex](https://www.tug.org/texlive/) installiert sein.
-
-Die folgenden Dateien werden von Hand gepflegt:
-
-- Die Datei `source/index.rst` sollte einen Eintrag für jedes Kapitel haben.
-- Für jedes Kapitel sollte es eine `.rst` Datei in `source` geben. Sie sollte alle Abschnitte enthalten.
-- Für jeden Abschnitt sollte es eine `.lean` Datei an der entsprechenden Stelle in `lean_source` geben.
-- Jeder Abschnitt sollte eine entsprechende Zeile in `lean_source/mk_all.sh` haben.
+This is the source code for [your book](https://github.com/NAME/BOOK).
 
 
-## Bauen des Dokuments
 
-Zuerst werden aus den `.lean` Dateien die `.rst` Dateien und die `.lean` Dateien gebaut.
+Our build process is rudimentary and not ready for prime time, but it is fairly
+convenient to use. Most of the source is written directly in the `.lean` files
+in `lean_source` using some simple markup. The Python script `mkdoc.py` then generates the `.rst` source for the textbook and an exercise file and a solution file for each section.
+
+To edit the Lean files, you need to have Lean 3 installed. The command
 
 ```bash
-lean_source/mkall.sh
+leanproject get-mathlib-cache
 ```
 
-Dann kann das Dokument als Webseite gebaut werden
+installs the required version of the mathlib and caches the build files. 
 
-Linux:
+
+
+## How to install
+
+To compile the source code, you'll need the following tools installed:
+
+- Python
+
+- Sphinx
+
+- ReadTheDocs theme
+
+- TeXLive (only if you want to build a PDF)
+
+
+
+To [install]([Installation &mdash; Sphinx-RTD-Tutorial documentation](https://sphinx-rtd-tutorial.readthedocs.io/en/latest/install.html)) Sphinx run `(sudo) pip install sphinx`. After that, install the ReadTheDocs theme with `(sudo) pip install sphinx-rtd-theme`. To install TexLive, follow the instructions of the official [documentation](https://www.tug.org/texlive/).
+
+
+
+Use the [cheatsheet](restructuredText_Cheatsheet.rst) to get to know the syntax of the reST-Format
+
+
+
+## How to configure
+
+Before building the book, you should configure the meta information. We recomment using the search and replace function of VS Code. Search the following strings and replace them with real information. Most of the configuration is done in the `source/conf.py`
+
+| Key                      | Explanation                                                          |
+| ------------------------ | -------------------------------------------------------------------- |
+| TITLE OF THE BOOK        | The title.                                                           |
+| SUBTITILE                | The subtitle.                                                        |
+| MAX MUSTERMANN           | The author.                                                          |
+| BOOK_FILE_NAME           | The filename without the file extension used for the LaTeX document. |
+| git@github.com:DEST_REPO | The link to your destination repository.                             |
+
+
+
+## How to build
+
+Run the following command to build the reStructuredText  files, the exercise and solution files.
+
+```bash
+python ./lean_source/mkdoc.py
+```
+
+The command
+
 ```bash
 make html
 ```
 
-Windows:
-```cmd
-make.bat html
-```
+build the html book and places it in the `build` folder. The command
 
-Alternativ kann das Dokument auch als Latex Dokument gebaut werden
-
-Linux:
 ```bash
 make latexpdf
 ```
 
-Die Build Dateien liegen im `build` Ordner unter den jeweiligen Ordnern `html` und `latex`.
+build the pdf textbook instead.
+
+
+
+The script `deploy.sh` is used to deploy everything to your destination repository. Make sure to activate GitHub Pages with GitHub Actions for that repository. To activate, under `settings/pages` change the `Source` from `Deploy from a branch` to `GitHub Actions`.

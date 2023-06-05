@@ -8,7 +8,7 @@ sys.path.insert(0, os.path.abspath('.'))
 
 project = 'TITLE OF THE BOOK'
 subtitle = 'SUBTITLE'
-author = 'AUTHOR'
+author = 'MAX MUSTERMANN'
 copyright = '2022, ' + author
 book_file_name = 'BOOK_FILE_NAME'
 
