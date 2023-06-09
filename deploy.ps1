@@ -25,7 +25,7 @@ if (Test-Path src) {
   Remove-Item .\src -Recurse -Force
 }
 
-Copy-Item ..\user_repo\. . -Recurse -Force
+Copy-Item ..\dest_repo\. . -Recurse -Force
 Copy-Item ..\leanpkg.toml . -Force
 
 Copy-Item ..\build\html .\html -Recurse -Container

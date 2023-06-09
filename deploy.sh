@@ -21,7 +21,7 @@ cd deploy
 rm -rf ./html
 rm -rf ./src
 
-cp -rf ../user_repo/. .
+cp -rf ../dest_repo/. .
 cp -f ../leanpkg.toml .
 
 cp -rf ../build/html ./html
